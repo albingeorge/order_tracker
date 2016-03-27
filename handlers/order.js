@@ -5,8 +5,8 @@ var list = function(req, res) {
     drive.list(req.query.q, function(out) {
         for(var i in out.files) {
             if (out.files.hasOwnProperty(i)) {
-                html += "<br>";
                 html += out.files[i].name;
+                html += "<br>";
             }
         }
         res.status(200).send(html);
