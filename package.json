@@ -1,0 +1,12 @@
+{
+  "name": "shipment-tracker",
+  "version": "0.1.0",
+  "description": "An app to track orders",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "googleapis": "^4.0.0",
+    "mongoose": "^4.4.6",
+    "google-auth-library": "*"
+  }
+}
