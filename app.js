@@ -1,8 +1,9 @@
 // Imports
-var app = require('express')();
+var express = require('express')
+var app = express();
 var body_parser = require('body-parser');
 var mongoose = require("mongoose");
-var hbs = require('hbs');
+var hbs = require('./lib/handlebars');
 
 // var readline = require('readline');
 
@@ -14,8 +15,11 @@ var basic_auth = require("./lib/basic_auth");
 // Basic authentication
 app.use(basic_auth);
 
+
 app.set('view engine', 'html');
 app.engine('html', hbs.__express);
+app.use(express.static(__dirname + '/public'));
+
 
 // Connect to mongodb
 // var connection = mongoose.createConnection(config.db_URL);
