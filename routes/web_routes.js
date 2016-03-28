@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var orderHandles = require('../handlers/order')
+var Order = require("../models/order");
 
 router.get("/", function(req, res) {
     res.render('index', {
@@ -24,8 +25,17 @@ router.get("/order/pending", function(req, res) {
 });
 
 router.post("/order/add", function(req, res) {
-    console.log(req.param("country"));
-    console.log(req.params);
+    console.log(req.body);
+    var order = new Order(req.body);
+    var status = "";
+    order.save(function(err) {
+        if(err) {
+            status = "Failed :: " + err.message;
+            throw err;
+        }
+        status = "Order saved";
+    });
+    console.log(status);
     res.redirect("/");
 
 });
