@@ -23,4 +23,11 @@ router.get("/order/pending", function(req, res) {
     );
 });
 
+router.post("/order/add", function(req, res) {
+    console.log(req.param("country"));
+    console.log(req.params);
+    res.redirect("/");
+
+});
+
 module.exports = router;

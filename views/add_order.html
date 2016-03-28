@@ -1,19 +1,19 @@
 <h2>Add an Order</h2>
 
-<form action="/order/add">
+<form method="post" action="/order/add">
     <fieldset class="form-group">
         <label for="orderId">Order ID</label>
-        <input type="text" class="form-control" id="orderId" placeholder="Enter Order #">
+        <input name="order_id" type="text" class="form-control" id="orderId" placeholder="Enter Order #">
         <!-- <small class="text-muted">We'll never share your email with anyone else.</small> -->
     </fieldset>
     <fieldset class="form-group">
         <label for="srId">SR ID</label>
-        <input type="text" class="form-control" id="srId" placeholder="Enter SR #">
+        <input name="sr_id" type="text" class="form-control" id="srId" placeholder="Enter SR #">
         <!-- <small class="text-muted">We'll never share your email with anyone else.</small> -->
     </fieldset>
     <fieldset class="form-group">
     <label for="country">Country</label>
-        <select class="form-control" id="country">
+        <select name="country" class="form-control" id="country">
             <option>India</option>
             <option>US</option>
         </select>

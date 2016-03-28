@@ -1,3 +1,11 @@
 .form-group {
     margin-bottom: 20px;
 }
+
+.pending {
+    color: red;
+}
+
+.shipped {
+    color: green;
+}
