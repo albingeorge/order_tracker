@@ -16,4 +16,11 @@ router.get("/order/add", function(req, res) {
     );
 });
 
+router.get("/order/pending", function(req, res) {
+    res.render('pending_orders', {
+            "title": "Pending Orders"
+        }
+    );
+});
+
 module.exports = router;
