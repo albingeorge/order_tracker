@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var orderHandles = require('../handlers/order')
 var Order = require("../models/order");
+// var Order = require("mongoose").model("Orders");
 
 router.get("/", function(req, res) {
     res.render('index', {
@@ -25,19 +26,20 @@ router.get("/order/pending", function(req, res) {
 });
 
 router.post("/order/add", function(req, res) {
-    console.log(req.body);
-    var order = new Order(req.body);
-    var status = "";
+    var status = "Blah",
+        order = new Order(req.body);
+
+    console.log(order);
+
     order.save(function(err) {
         if(err) {
             status = "Failed :: " + err.message;
             throw err;
         }
         status = "Order saved";
+        console.log(status);
     });
-    console.log(status);
     res.redirect("/");
-
 });
 
 module.exports = router;

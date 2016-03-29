@@ -1,27 +1,22 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
-var ObjectId = Schema.ObjectId;
+// var ObjectId = Schema.ObjectId;
 
 // create a schema
-var orderSchema = new Schema({
-    id: ObjectId,
+var OrderSchema = new Schema({
+    // id: ObjectId,
     order_id: { type: String, required: true, trim: true },
     sr_id: { type: String, required: true, trim: true },
     country: { type: String, required: true, trim: true },
     shipping_status: { type: String, trim: true },
     shipping_document_link: { type: String, trim: true },
-    created_at: Date,
+    created_at: { type: Date, default: new Date() },
     updated_at: Date
 });
 
-orderSchema.pre('save', function(next) {
-  console.log("Pre save");
-  now = new Date();
-  this.updated_at = now;
-  if ( !this.created_at ) {
-    this.created_at = now;
-  }
+OrderSchema.pre('save', function(next) {
+  this.updated_at = new Date();
   if ( !this.shipping_status ) {
     this.shipping_status = "pending";
     this.shipping_document_link = "missing";
@@ -29,7 +24,6 @@ orderSchema.pre('save', function(next) {
   next();
 });
 
+var Order = mongoose.model('Order', OrderSchema);
 
-var Expense = mongoose.model('Orders', orderSchema);
-
-module.exports = Expense;
+module.exports = Order;
